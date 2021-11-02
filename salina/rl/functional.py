@@ -63,6 +63,11 @@ def gae(critic, reward, done, discount_factor, gae_coef):
     r = reward[1:]
     v = critic[1:].detach()
     d = done.float()
+
+
+    print('r: '+ str(r.shape))
+    print('v: '+ str(v.shape))
+
     td = r + discount_factor * (1.0 - d[1:]) * v - critic[:-1]
 
     # handling td0 case
